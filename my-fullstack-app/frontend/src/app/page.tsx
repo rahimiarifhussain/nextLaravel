@@ -1,15 +1,36 @@
-import { getHelloMessage, getHelloMessage2 } from "@/lib/api";
+import { Header } from "./components/header";
+import { HeroSection } from "./components/hero-section";
+import { SkillsSection } from "./components/skills-section";
+import { ProjectsSection } from "./components/projects-section";
+import { ContactSection } from "./components/contact-section";
 
-export default async function HomePage() {
-  const data = await getHelloMessage();
-  const data1 = await getHelloMessage2();
-
+export default function HomePage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold">Welcome to Next.js</h1>
-      <p className="mt-4">Message from Laravel:</p>
-      <pre className="">{data.message}</pre>
-      <pre className="">{data1.message1}</pre>
-    </main>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1 pt-16">
+        {/* Hero Section */}
+        <section id="home">
+          <HeroSection />
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects">
+          <ProjectsSection />
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills">
+          <SkillsSection />
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact">
+          <ContactSection />
+        </section>
+
+        <Header />
+      </main>
+    </div>
   );
 }

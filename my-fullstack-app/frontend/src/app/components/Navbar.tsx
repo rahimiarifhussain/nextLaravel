@@ -1,53 +1,39 @@
+"use client";
+
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { Button } from "/components/ui/button";
+import { ModeToggle } from "../components/mode-toggle";
 
 export default function Navbar() {
   return (
-    <nav
-      style={{
-        padding: "1rem 2rem",
-        backgroundColor: "#1a73e8",
-        color: "white",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
-      }}
-    >
-      <ul
-        style={{
-          display: "flex",
-          gap: "2rem",
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-          alignItems: "center",
-        }}
-      >
-        <li>
-          <Link href="/" style={linkStyle}>
+    <nav className="sticky top-0 z-50 w-full border-b bg-white dark:bg-gray-900">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <div className="flex items-center gap-6">
+          <Link
+            href="/"
+            className="text-lg font-semibold text-gray-900 dark:text-gray-100"
+          >
             Home
           </Link>
-        </li>
-        <li>
-          <Link href="/posts" style={linkStyle}>
+          <Link
+            href="/posts"
+            className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline"
+          >
             Posts
           </Link>
-        </li>
-        <li>
-          <Link href="/about" style={linkStyle}>
+          <Link
+            href="/about"
+            className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline"
+          >
             About
           </Link>
-        </li>
-      </ul>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <ModeToggle />
+        </div>
+      </div>
     </nav>
   );
 }
-
-const linkStyle: React.CSSProperties = {
-  color: "white",
-  textDecoration: "none",
-  fontWeight: "500",
-  fontSize: "1.1rem",
-  transition: "color 0.3s ease",
-  cursor: "pointer",
-};
